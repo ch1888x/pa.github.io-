@@ -31,6 +31,7 @@
         .icon.support::before { content: "\1F4DE"; } /* 📞 */
         .icon.dollar::before { content: "\0024"; } /* $ */
         .icon.wallet::before { content: "\1F4B0"; } /* 💰 */
+        /* 模拟社交媒体图标 */
         .icon.F::before { content: "F"; } /* 模拟FB图标 */
         .icon.T::before { content: "T"; } /* 模拟TW图标 */
         .icon.Tg::before { content: "Tg"; } /* 模拟TG图标 */
@@ -527,7 +528,7 @@
         .modal-content {
             background-color: white;
             margin: auto;
-            padding: calc(var(--spacing-unit) * 1.5);
+            padding: calc(var(--spacing-unit) * 1.5); /* Changed to calc() for consistency */
             border-radius: 8px;
             width: 90%;
             max-width: 500px;
@@ -572,7 +573,7 @@
 
         .modal-content input[type="text"],
         .modal-content input[type="password"],
-        .modal-content input[type="email"] { /* 保留email样式以防未来使用 */
+        .modal-content input[type="email"] {
             width: calc(100% - 20px);
             padding: 10px;
             border: 1px solid var(--border-color);
@@ -665,7 +666,8 @@
                     <li><a href="#faq" class="nav-link">常见问题</a></li>
                 </ul>
             </nav>
-            <div class="cta-buttons">
+            <div class="cta-buttons" id="headerCtaButtons">
+                <!-- 这里的按钮将由 JavaScript 动态生成/管理 -->
                 <button class="btn btn-outline" id="loginBtn">登录</button>
                 <button class="btn btn-primary" id="registerBtn">注册</button>
             </div>
@@ -678,7 +680,8 @@
             <div class="container">
                 <h1>加入腾龙娱乐，开启您的财富之旅！</h1>
                 <p>体验顶级的在线娱乐平台，享受真人荷官、电子游戏、体育投注和更多精彩。安全、公平、值得信赖！</p>
-                <a href="#" class="btn btn-primary btn-large" id="heroRegisterBtn">立即注册，领取新手礼包！</a>
+                <!-- 注意：这里的链接直接跳转，不触发模态框 -->
+                <a href="https://www.itl1001.com/" target="_blank" class="btn btn-primary btn-large">立即注册，领取新手礼包！</a>
             </div>
         </section>
 
@@ -896,7 +899,7 @@
             </div>
             <div class="footer-section contact-info">
                 <h4>联系我们</h4>
-                <p>邮箱: support@tenglong.com <br> 客服热线: +852 1234 5678</p>
+                <p>邮箱: shixinqiangx@gmail.com <br> 客服热线: 09662348273</p>
                 <p>工作时间: 24小时，全年无休</p>
             </div>
         </div>
@@ -941,6 +944,9 @@
     <!-- 内联JavaScript：用于页面的交互功能 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 获取头部元素用于计算滚动偏移
+            const header = document.querySelector('header');
+
             // 平滑滚动效果
             document.querySelectorAll('nav a.nav-link').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -958,7 +964,6 @@
             });
 
             // 监听页面滚动，激活当前可见的导航项
-            const header = document.querySelector('header'); // 获取头部元素以计算偏移
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('nav a.nav-link');
 
@@ -993,16 +998,17 @@
             const loginModal = document.getElementById('loginModal');
             const registerModal = document.getElementById('registerModal');
 
-            const loginBtn = document.getElementById('loginBtn');
-            const registerBtn = document.getElementById('registerBtn');
-            const heroRegisterBtn = document.getElementById('heroRegisterBtn');
-            const ctaRegisterBtn = document.getElementById('ctaRegisterBtn');
+            const headerCtaButtons = document.getElementById('headerCtaButtons'); // 头部按钮容器
+            const ctaRegisterBtn = document.getElementById('ctaRegisterBtn'); // 底部CTA注册按钮
 
             const closeLoginModal = document.getElementById('closeLoginModal');
             const closeRegisterModal = document.getElementById('closeRegisterModal');
 
             const switchToRegister = document.getElementById('switchToRegister');
             const switchToLogin = document.getElementById('switchToLogin');
+
+            // 模拟登录状态
+            let isLoggedIn = false; // 初始为未登录状态
 
             function openModal(modal) {
                 modal.style.display = 'flex'; // 使用flex以便居中
@@ -1012,12 +1018,37 @@
                 modal.style.display = 'none';
             }
 
-            // 打开模态框按钮
-            loginBtn.addEventListener('click', () => openModal(loginModal));
-            registerBtn.addEventListener('click', () => openModal(registerModal));
-            heroRegisterBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(registerModal); });
-            ctaRegisterBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(registerModal); });
+            // 更新头部登录/注册/退出按钮的显示状态
+            function updateHeaderButtons() {
+                if (isLoggedIn) {
+                    // 如果已登录，显示“退出登录”按钮
+                    headerCtaButtons.innerHTML = '<button class="btn btn-primary" id="logoutBtn">退出登录</button>';
+                    document.getElementById('logoutBtn').addEventListener('click', () => {
+                        isLoggedIn = false;
+                        alert('您已退出登录。');
+                        updateHeaderButtons(); // 退出登录后再次更新按钮
+                    });
+                } else {
+                    // 如果未登录，显示“登录”和“注册”按钮
+                    headerCtaButtons.innerHTML = `
+                        <button class="btn btn-outline" id="loginBtn">登录</button>
+                        <button class="btn btn-primary" id="registerBtn">注册</button>
+                    `;
+                    // 重新绑定事件监听器，因为 innerHTML 会覆盖之前的监听器
+                    document.getElementById('loginBtn').addEventListener('click', () => openModal(loginModal));
+                    document.getElementById('registerBtn').addEventListener('click', () => openModal(registerModal));
+                }
+            }
 
+            // 页面加载时初始化头部按钮状态
+            updateHeaderButtons();
+
+            // 绑定模态框的打开事件到初始按钮（或其他需要打开的元素）
+            // 注意：英雄区的“立即注册”按钮现在直接跳转，不触发模态框了，所以这里移除了它的监听器
+            // ctaRegisterBtn 仍然触发注册模态框
+            if (ctaRegisterBtn) {
+                ctaRegisterBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(registerModal); });
+            }
 
             // 关闭模态框按钮
             closeLoginModal.addEventListener('click', () => closeModal(loginModal));
@@ -1046,7 +1077,7 @@
                 openModal(loginModal);
             });
 
-            // 登录表单提交
+            // 登录表单提交处理（模拟）
             document.querySelector('#loginModal form').addEventListener('submit', (e) => {
                 e.preventDefault(); // 阻止表单默认提交
 
@@ -1055,7 +1086,6 @@
 
                 // --- 模拟后端处理逻辑 ---
                 // 在真实项目中，这里会发送 AJAX 请求到后端进行验证
-                // 如果是真实项目，您会在这里使用 fetch() 或 XMLHttpRequest
                 // 例如：
                 /*
                 fetch('/api/login', {
@@ -1067,9 +1097,10 @@
                 .then(data => {
                     if (data.success) {
                         alert('登录成功！欢迎您，' + username + '！');
-                        // 存储用户token/session，跳转到用户中心
+                        isLoggedIn = true; // 模拟登录成功
+                        updateHeaderButtons(); // 更新头部按钮
                         closeModal(loginModal);
-                        // window.location.href = '/dashboard';
+                        // window.location.href = '/dashboard'; // 跳转到用户中心
                     } else {
                         alert('登录失败: ' + (data.message || '用户名或密码错误。'));
                     }
@@ -1082,11 +1113,12 @@
 
                 // 演示成功（真实场景会根据后端响应来决定）
                 alert('登录成功！欢迎您，' + username + '！');
+                isLoggedIn = true; // 模拟登录成功
+                updateHeaderButtons(); // 更新头部按钮
                 closeModal(loginModal); // 关闭登录框
-                // 可以在这里添加一些UI更新，比如改变头部登录/注册按钮的状态
             });
 
-            // 注册表单提交
+            // 注册表单提交处理（模拟）
             document.querySelector('#registerModal form').addEventListener('submit', (e) => {
                 e.preventDefault(); // 阻止表单默认提交
 
