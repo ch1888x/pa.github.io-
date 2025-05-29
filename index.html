@@ -22,7 +22,7 @@
             font-size: 1.2em;
             vertical-align: middle;
         }
-        .icon::before { content: "\2605"; /* 默认星号 */ } /* 示例：一个默认图标 */
+        .icon::before { content: "\2605"; } /* 默认星号 */
         .icon.star::before { content: "\2605"; } /* ★ */
         .icon.check::before { content: "\2713"; } /* ✓ */
         .icon.gamepad::before { content: "\1F3AE"; } /* 🎮 */
@@ -31,6 +31,9 @@
         .icon.support::before { content: "\1F4DE"; } /* 📞 */
         .icon.dollar::before { content: "\0024"; } /* $ */
         .icon.wallet::before { content: "\1F4B0"; } /* 💰 */
+        .icon.F::before { content: "F"; } /* 模拟FB图标 */
+        .icon.T::before { content: "T"; } /* 模拟TW图标 */
+        .icon.Tg::before { content: "Tg"; } /* 模拟TG图标 */
     </style>
 
     <!-- 内联CSS样式：用于此页面的所有视觉设计 -->
@@ -524,7 +527,7 @@
         .modal-content {
             background-color: white;
             margin: auto;
-            padding: var(--spacing-unit) * 1.5;
+            padding: calc(var(--spacing-unit) * 1.5);
             border-radius: 8px;
             width: 90%;
             max-width: 500px;
@@ -569,7 +572,7 @@
 
         .modal-content input[type="text"],
         .modal-content input[type="password"],
-        .modal-content input[type="email"] {
+        .modal-content input[type="email"] { /* 保留email样式以防未来使用 */
             width: calc(100% - 20px);
             padding: 10px;
             border: 1px solid var(--border-color);
@@ -832,7 +835,7 @@
                             <span class="arrow">></span>
                         </div>
                         <div class="faq-answer">
-                            <p>点击页面顶部的“注册”按钮，填写您的手机号、设置密码等信息，按照提示完成注册即可。过程简单快捷。</p>
+                            <p>点击页面顶部的“注册”按钮，填写您的用户名和密码，按照提示完成注册即可。过程简单快捷。</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -875,9 +878,9 @@
                 <h4>腾龙娱乐</h4>
                 <p>极致娱乐，尽在腾龙！<br>致力于为您带来最优质的在线娱乐体验。</p>
                 <div class="social-links">
-                    <a href="#" title="Facebook"><i class="icon">F</i></a> <!-- 模拟FB图标 -->
-                    <a href="#" title="Twitter"><i class="icon">T</i></a> <!-- 模拟TW图标 -->
-                    <a href="#" title="Telegram"><i class="icon">Tg</i></a> <!-- 模拟TG图标 -->
+                    <a href="#" title="Facebook"><i class="icon F"></i></a> <!-- 模拟FB图标 -->
+                    <a href="#" title="Twitter"><i class="icon T"></i></a> <!-- 模拟TW图标 -->
+                    <a href="#" title="Telegram"><i class="icon Tg"></i></a> <!-- 模拟TG图标 -->
                 </div>
             </div>
             <div class="footer-section quick-links">
@@ -908,7 +911,7 @@
             <span class="close-button" id="closeLoginModal">×</span>
             <h3>账户登录</h3>
             <form action="#" method="post">
-                <input type="text" placeholder="用户名/手机号" required>
+                <input type="text" placeholder="用户名" required> <!-- 仅用户名 -->
                 <input type="password" placeholder="密码" required>
                 <button type="submit" class="btn btn-primary">登录</button>
                 <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">
@@ -926,8 +929,7 @@
                 <input type="text" placeholder="用户名" required>
                 <input type="password" placeholder="设置密码" required>
                 <input type="password" placeholder="确认密码" required>
-                <input type="email" placeholder="邮箱 (可选)" >
-                <input type="text" placeholder="手机号" required>
+                <!-- 邮箱和手机号已移除 -->
                 <button type="submit" class="btn btn-primary">注册</button>
                 <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">
                     已有账户？ <a href="#" id="switchToLogin" style="color: var(--primary-color);">立即登录</a>
@@ -956,6 +958,7 @@
             });
 
             // 监听页面滚动，激活当前可见的导航项
+            const header = document.querySelector('header'); // 获取头部元素以计算偏移
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('nav a.nav-link');
 
@@ -1043,14 +1046,87 @@
                 openModal(loginModal);
             });
 
-            // 示例：阻止表单提交，因为没有后端
-            document.querySelectorAll('.modal form').forEach(form => {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    alert('这只是一个演示，表单数据不会真的发送！');
-                    closeModal(loginModal); // 关闭登录框
-                    closeModal(registerModal); // 关闭注册框
+            // 登录表单提交
+            document.querySelector('#loginModal form').addEventListener('submit', (e) => {
+                e.preventDefault(); // 阻止表单默认提交
+
+                const username = e.target[0].value;
+                const password = e.target[1].value;
+
+                // --- 模拟后端处理逻辑 ---
+                // 在真实项目中，这里会发送 AJAX 请求到后端进行验证
+                // 如果是真实项目，您会在这里使用 fetch() 或 XMLHttpRequest
+                // 例如：
+                /*
+                fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('登录成功！欢迎您，' + username + '！');
+                        // 存储用户token/session，跳转到用户中心
+                        closeModal(loginModal);
+                        // window.location.href = '/dashboard';
+                    } else {
+                        alert('登录失败: ' + (data.message || '用户名或密码错误。'));
+                    }
+                })
+                .catch(error => {
+                    console.error('登录请求错误:', error);
+                    alert('网络错误，请稍后再试。');
                 });
+                */
+
+                // 演示成功（真实场景会根据后端响应来决定）
+                alert('登录成功！欢迎您，' + username + '！');
+                closeModal(loginModal); // 关闭登录框
+                // 可以在这里添加一些UI更新，比如改变头部登录/注册按钮的状态
+            });
+
+            // 注册表单提交
+            document.querySelector('#registerModal form').addEventListener('submit', (e) => {
+                e.preventDefault(); // 阻止表单默认提交
+
+                const username = e.target[0].value;
+                const password = e.target[1].value;
+                const confirmPassword = e.target[2].value;
+
+                if (password !== confirmPassword) {
+                    alert('两次输入的密码不一致，请重新输入！');
+                    return; // 停止执行后续操作
+                }
+
+                // --- 模拟后端处理逻辑 ---
+                // 在真实项目中，这里会发送 AJAX 请求到后端进行注册
+                /*
+                fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('注册成功！请使用您的新账户登录。');
+                        closeModal(registerModal); // 关闭注册框
+                        openModal(loginModal); // 注册成功后自动打开登录框
+                    } else {
+                        alert('注册失败: ' + (data.message || '用户名可能已被占用或系统错误。'));
+                    }
+                })
+                .catch(error => {
+                    console.error('注册请求错误:', error);
+                    alert('网络错误，请稍后再试。');
+                });
+                */
+
+                // 演示成功（真实场景会根据后端响应来决定）
+                alert('恭喜！用户 "' + username + '" 注册成功！请登录。');
+                closeModal(registerModal); // 关闭注册框
+                openModal(loginModal); // 注册成功后自动打开登录框
             });
         });
     </script>
