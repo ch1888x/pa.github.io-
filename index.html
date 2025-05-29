@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>腾龙娱乐 - 极致娱乐体验，安全公平</title>
+    <meta name="description" content="腾龙娱乐是您信赖的在线娱乐平台，提供丰富多彩的游戏，极致的用户体验，安全公平的娱乐环境。立即加入，享受专属福利！">
+    <link rel="icon" href="https://via.placeholder.com/32x32?text=TL" type="image/png"> <!-- 替换成您的网站图标 -->
+
+    <!-- 引入外部字体（可选，此处为示例，需联网才能加载） -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet"> -->
+
+    <!-- 模拟引入图标字体 (实际使用时应引入Font Awesome等库) -->
+    <style>
+        /* 仅为演示图标样式，实际项目中会引入专业的图标库如 Font Awesome */
+        .icon {
+            font-family: 'Times New Roman', serif; /* 随便一个字体，仅做占位符效果 */
+            font-style: normal;
+            font-weight: normal;
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+        .icon::before { content: "\2605"; /* 默认星号 */ } /* 示例：一个默认图标 */
+        .icon.star::before { content: "\2605"; } /* ★ */
+        .icon.check::before { content: "\2713"; } /* ✓ */
+        .icon.gamepad::before { content: "\1F3AE"; } /* 🎮 */
+        .icon.gift::before { content: "\1F381"; } /* 🎁 */
+        .icon.lock::before { content: "\1F512"; } /* 🔒 */
+        .icon.support::before { content: "\1F4DE"; } /* 📞 */
+        .icon.dollar::before { content: "\0024"; } /* $ */
+        .icon.wallet::before { content: "\1F4B0"; } /* 💰 */
+    </style>
+
+    <!-- 内联CSS样式：用于此页面的所有视觉设计 -->
+    <style>
+        :root {
+            --primary-color: #007bff; /* 蓝色 */
+            --secondary-color: #6c757d; /* 灰色 */
+            --accent-color: #ffc107; /* 黄色/金色，用于强调 */
+            --dark-bg: #212529; /* 深色背景 */
+            --light-bg: #f8f9fa; /* 浅色背景 */
+            --text-light: #f8f9fa; /* 浅色文字 */
+            --text-dark: #343a40; /* 深色文字 */
+            --border-color: #dee2e6; /* 边框颜色 */
+            --spacing-unit: 20px;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', Arial, sans-serif; /* 假设有字体，否则用Arial */
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* 平滑滚动 */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: var(--spacing-unit) 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px; /* 替换成实际logo大小 */
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: var(--spacing-unit);
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* 英雄区/Banner样式 */
+        .hero {
+            background: url('https://via.placeholder.com/1920x600/333/eee?text=腾龙娱乐%20-极致娱乐体验') no-repeat center center/cover; /* 替换成您的背景图 */
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5); /* 半透明遮罩 */
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 通用区块样式 */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        section:nth-of-type(even) { /* 隔行背景色 */
+            background-color: var(--light-bg);
+        }
+
+        section:nth-of-type(odd) {
+            background-color: white;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 关于我们/简介 */
+        .about-us p {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .about-features {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-unit);
+            flex-wrap: wrap; /* 允许换行 */
+        }
+        .feature-item {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: var(--spacing-unit);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+        .feature-item .icon {
+            font-size: 3em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+        .feature-item h3 {
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .feature-item p {
+            font-size: 1em;
+            color: #ccc;
+        }
+
+        /* 游戏类别 */
+        .game-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-unit);
+            margin-top: 40px;
+        }
+        .game-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .game-card-content {
+            padding: var(--spacing-unit);
+        }
+        .game-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+        .game-card p {
+            font-size: 0.95em;
+            color: var(--text-dark);
+        }
+        .game-card .btn {
+            margin-top: 15px;
+            width: calc(100% - 2*var(--spacing-unit));
+            text-align: center;
+        }
+
+        /* 优惠活动 */
+        .promotions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-unit);
+        }
+        .promo-card {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--spacing-unit);
+            text-align: left;
+            transition: border-color 0.3s ease;
+        }
+        .promo-card:hover {
+            border-color: var(--primary-color);
+        }
+        .promo-card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .promo-card h3 .icon {
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        .promo-card p {
+            font-size: 0.95em;
+        }
+
+        /* 为什么选择我们 */
+        .why-choose-us .features-list {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-unit);
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .reason-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            padding: var(--spacing-unit);
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: left;
+            border-bottom: 4px solid var(--primary-color);
+        }
+        .reason-item .icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .reason-item h3 {
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .reason-item p {
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+
+        /* 常见问题 */
+        .faq-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .faq-question {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background-color: #0056b3;
+        }
+        .faq-question .arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            background-color: white;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* 足够高以容纳内容 */
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(90deg);
+        }
+
+        /* CTA 区块 */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 80px 0;
+        }
+        .cta-section h2 {
+            color: white;
+        }
+        .cta-section h2::after {
+            background-color: var(--accent-color);
+        }
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 底部样式 */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: var(--spacing-unit);
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--text-light);
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5em;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: var(--spacing-unit);
+            margin-top: var(--spacing-unit);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed; /* 保持在屏幕上 */
+            z-index: 2000; /* 放置在最上层 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* 允许滚动 */
+            background-color: rgba(0,0,0,0.6); /* 半透明背景 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: var(--spacing-unit) * 1.5;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation: fadeInScale 0.3s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-button {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-content h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content input[type="text"],
+        .modal-content input[type="password"],
+        .modal-content input[type="email"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .modal-content .btn {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            font-size: 1.1em;
+        }
+
+        /* 响应式设计基础 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo {
+                margin-bottom: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .about-features, .game-categories, .promotions-grid, .why-choose-us .features-list, .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-item, .game-card, .promo-card, .reason-item, .footer-section {
+                width: 90%;
+                max-width: 400px; /* 限制在小屏幕上的最大宽度 */
+            }
+            .cta-buttons {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            section {
+                padding: 40px 0;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            .btn {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 头部导航区 -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <img src="https://via.placeholder.com/40x40/007bff/fff?text=TL" alt="腾龙娱乐Logo">
+                腾龙娱乐
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active">首页</a></li>
+                    <li><a href="#about" class="nav-link">关于我们</a></li>
+                    <li><a href="#games" class="nav-link">游戏中心</a></li>
+                    <li><a href="#promotions" class="nav-link">优惠活动</a></li>
+                    <li><a href="#features" class="nav-link">平台优势</a></li>
+                    <li><a href="#faq" class="nav-link">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="cta-buttons">
+                <button class="btn btn-outline" id="loginBtn">登录</button>
+                <button class="btn btn-primary" id="registerBtn">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 英雄区/主视觉区 -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>加入腾龙娱乐，开启您的财富之旅！</h1>
+                <p>体验顶级的在线娱乐平台，享受真人荷官、电子游戏、体育投注和更多精彩。安全、公平、值得信赖！</p>
+                <a href="#" class="btn btn-primary btn-large" id="heroRegisterBtn">立即注册，领取新手礼包！</a>
+            </div>
+        </section>
+
+        <!-- 关于我们/简介区 -->
+        <section id="about" class="about-us">
+            <div class="container">
+                <h2>关于腾龙娱乐</h2>
+                <p>腾龙娱乐作为亚洲领先的在线娱乐平台，致力于为全球玩家提供一个安全、公平、透明且充满乐趣的娱乐环境。我们拥有合法的运营执照，采用最先进的加密技术，确保每一位用户的资金和个人信息安全。</p>
+                <p>我们深知用户体验的重要性，因此平台界面简洁直观，操作流畅便捷。无论您是经验丰富的资深玩家，还是初次尝试的新手，腾龙娱乐都将是您的最佳选择。</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="icon gamepad"></i>
+                        <h3>海量游戏选择</h3>
+                        <p>我们汇聚了全球顶级的游戏产品，包括真人娱乐、老虎机、体育赛事、棋牌游戏等，满足您的一切娱乐需求。</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="icon lock"></i>
+                        <h3>极致安全保障</h3>
+                        <p>采用SSL加密技术和多重安全防护，保障您的账户和资金安全，让您无忧享受娱乐。</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="icon support"></i>
+                        <h3>24/7 专业客服</h3>
+                        <p>我们的专业客服团队全年无休，随时待命，为您提供最及时、最专业的帮助和支持。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏中心区 -->
+        <section id="games" class="game-center">
+            <div class="container">
+                <h2>热门游戏类型</h2>
+                <p>探索腾龙娱乐丰富多彩的游戏世界，总有一款适合您！</p>
+                <div class="game-categories">
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/400x200/007bff/fff?text=真人娱乐" alt="真人娱乐">
+                        <div class="game-card-content">
+                            <h3>真人娱乐</h3>
+                            <p>与真实荷官在线互动，体验百家乐、轮盘、骰宝等经典娱乐，感受身临其境的赌场氛围。</p>
+                            <a href="#" class="btn btn-outline">立即体验</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/400x200/28a745/fff?text=电子老虎机" alt="电子老虎机">
+                        <div class="game-card-content">
+                            <h3>电子老虎机</h3>
+                            <p>数百款精美老虎机游戏，主题多样，玩法刺激，巨额奖池等待您的挑战！</p>
+                            <a href="#" class="btn btn-outline">立即体验</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/400x200/ffc107/fff?text=体育投注" alt="体育投注">
+                        <div class="game-card-content">
+                            <h3>体育投注</h3>
+                            <p>覆盖全球各大体育赛事，提供实时赔率，让您在支持喜爱的球队时，享受额外激情。</p>
+                            <a href="#" class="btn btn-outline">立即体验</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/400x200/dc3545/fff?text=棋牌游戏" alt="棋牌游戏">
+                        <div class="game-card-content">
+                            <h3>棋牌游戏</h3>
+                            <p>经典的斗地主、麻将、炸金花等棋牌玩法，策略与运气并存，与全球玩家一较高下。</p>
+                            <a href="#" class="btn btn-outline">立即体验</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 优惠活动区 -->
+        <section id="promotions" class="promotions">
+            <div class="container">
+                <h2>最新优惠活动</h2>
+                <p>注册腾龙娱乐，尊享独家福利，让您的娱乐体验更加丰富多彩！</p>
+                <div class="promotions-grid">
+                    <div class="promo-card">
+                        <h3><i class="icon gift"></i>新手注册大礼包</h3>
+                        <p>首次注册并充值，即可获得100%首存优惠，最高可达888元！</p>
+                        <a href="#" class="btn btn-primary btn-sm">查看详情</a>
+                    </div>
+                    <div class="promo-card">
+                        <h3><i class="icon dollar"></i>每日返水无上限</h3>
+                        <p>无论输赢，每日根据您的有效投注额进行返水，返水比例高，领取无上限！</p>
+                        <a href="#" class="btn btn-primary btn-sm">查看详情</a>
+                    </div>
+                    <div class="promo-card">
+                        <h3><i class="icon wallet"></i>推荐好友奖励</h3>
+                        <p>邀请好友加入腾龙娱乐，成功注册并存款，您和好友均可获得丰厚奖励！</p>
+                        <a href="#" class="btn btn-primary btn-sm">查看详情</a>
+                    </div>
+                    <div class="promo-card">
+                        <h3><i class="icon star"></i>VIP专属特权</h3>
+                        <p>成为腾龙娱乐VIP会员，尊享专属客户经理、生日礼金、更高返水和更多定制服务！</p>
+                        <a href="#" class="btn btn-primary btn-sm">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 为什么选择我们/平台优势 -->
+        <section id="features" class="why-choose-us">
+            <div class="container">
+                <h2>为什么选择腾龙娱乐？</h2>
+                <p>我们不仅提供丰富的游戏，更致力于打造一个值得您信赖的、负责任的娱乐平台。</p>
+                <div class="features-list">
+                    <div class="reason-item">
+                        <i class="icon check"></i>
+                        <h3>合法合规运营</h3>
+                        <p>持有国际博彩牌照，接受严格监管，确保所有运营行为合法合规。</p>
+                    </div>
+                    <div class="reason-item">
+                        <i class="icon check"></i>
+                        <h3>先进技术保障</h3>
+                        <p>采用行业顶尖的加密技术和安全系统，全方位保护您的数据安全和隐私。</p>
+                    </div>
+                    <div class="reason-item">
+                        <i class="icon check"></i>
+                        <h3>公平公正原则</h3>
+                        <p>所有游戏结果均由国际认证的随机数生成器产生，绝无作弊，保证游戏公平。</p>
+                    </div>
+                    <div class="reason-item">
+                        <i class="icon check"></i>
+                        <h3>便捷存取款</h3>
+                        <p>支持多种安全快捷的存取款方式，处理效率高，让您资金周转无忧。</p>
+                    </div>
+                    <div class="reason-item">
+                        <i class="icon check"></i>
+                        <h3>负责任博彩</h3>
+                        <p>我们提倡负责任博彩，提供自我限制工具，帮助玩家健康娱乐。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 立即行动/CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>立即加入腾龙娱乐！</h2>
+                <p>别再犹豫，立即注册成为腾龙娱乐的一员，与全球玩家一起，体验前所未有的娱乐盛宴！</p>
+                <a href="#" class="btn btn-outline btn-large" id="ctaRegisterBtn">立即注册</a>
+            </div>
+        </section>
+
+        <!-- 常见问题区 -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2>常见问题解答</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>如何注册腾龙娱乐账户？</span>
+                            <span class="arrow">></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>点击页面顶部的“注册”按钮，填写您的手机号、设置密码等信息，按照提示完成注册即可。过程简单快捷。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>腾龙娱乐是否安全可靠？</span>
+                            <span class="arrow">></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>是的，腾龙娱乐持有合法的运营牌照，并采用银行级的加密技术保护您的个人信息和资金安全。我们致力于提供一个公平、透明的娱乐环境。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>如何进行存款和提款？</span>
+                            <span class="arrow">></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>登录您的账户后，进入“存取款”页面，选择您偏好的支付方式（如银行卡、电子钱包等），按照指引完成操作。我们支持多种快速安全的存取款渠道。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>如果遇到问题，如何联系客服？</span>
+                            <span class="arrow">></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>您可以通过网站右下角的在线客服按钮、或查看底部联系方式中的电话/邮箱，我们的专业客服团队24小时在线，随时为您提供帮助。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部信息区 -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section company-info">
+                <h4>腾龙娱乐</h4>
+                <p>极致娱乐，尽在腾龙！<br>致力于为您带来最优质的在线娱乐体验。</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="icon">F</i></a> <!-- 模拟FB图标 -->
+                    <a href="#" title="Twitter"><i class="icon">T</i></a> <!-- 模拟TW图标 -->
+                    <a href="#" title="Telegram"><i class="icon">Tg</i></a> <!-- 模拟TG图标 -->
+                </div>
+            </div>
+            <div class="footer-section quick-links">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#games">游戏中心</a></li>
+                    <li><a href="#promotions">优惠活动</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">条款与条件</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-info">
+                <h4>联系我们</h4>
+                <p>邮箱: support@tenglong.com <br> 客服热线: +852 1234 5678</p>
+                <p>工作时间: 24小时，全年无休</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2023 腾龙娱乐. All Rights Reserved. | 请理性博彩，未成年人禁止参与。</p>
+        </div>
+    </footer>
+
+    <!-- 登录/注册模态框 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeLoginModal">×</span>
+            <h3>账户登录</h3>
+            <form action="#" method="post">
+                <input type="text" placeholder="用户名/手机号" required>
+                <input type="password" placeholder="密码" required>
+                <button type="submit" class="btn btn-primary">登录</button>
+                <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">
+                    还没有账户？ <a href="#" id="switchToRegister" style="color: var(--primary-color);">立即注册</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeRegisterModal">×</span>
+            <h3>新用户注册</h3>
+            <form action="#" method="post">
+                <input type="text" placeholder="用户名" required>
+                <input type="password" placeholder="设置密码" required>
+                <input type="password" placeholder="确认密码" required>
+                <input type="email" placeholder="邮箱 (可选)" >
+                <input type="text" placeholder="手机号" required>
+                <button type="submit" class="btn btn-primary">注册</button>
+                <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">
+                    已有账户？ <a href="#" id="switchToLogin" style="color: var(--primary-color);">立即登录</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- 内联JavaScript：用于页面的交互功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 平滑滚动效果
+            document.querySelectorAll('nav a.nav-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // 激活当前导航项
+                    document.querySelectorAll('nav a.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+
+            // 监听页面滚动，激活当前可见的导航项
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - header.offsetHeight; // 考虑固定头部高度
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+
+            // FAQ 折叠/展开功能
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const parentItem = this.closest('.faq-item');
+                    parentItem.classList.toggle('active');
+                });
+            });
+
+            // 模态框功能
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const heroRegisterBtn = document.getElementById('heroRegisterBtn');
+            const ctaRegisterBtn = document.getElementById('ctaRegisterBtn');
+
+            const closeLoginModal = document.getElementById('closeLoginModal');
+            const closeRegisterModal = document.getElementById('closeRegisterModal');
+
+            const switchToRegister = document.getElementById('switchToRegister');
+            const switchToLogin = document.getElementById('switchToLogin');
+
+            function openModal(modal) {
+                modal.style.display = 'flex'; // 使用flex以便居中
+            }
+
+            function closeModal(modal) {
+                modal.style.display = 'none';
+            }
+
+            // 打开模态框按钮
+            loginBtn.addEventListener('click', () => openModal(loginModal));
+            registerBtn.addEventListener('click', () => openModal(registerModal));
+            heroRegisterBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(registerModal); });
+            ctaRegisterBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(registerModal); });
+
+
+            // 关闭模态框按钮
+            closeLoginModal.addEventListener('click', () => closeModal(loginModal));
+            closeRegisterModal.addEventListener('click', () => closeModal(registerModal));
+
+            // 点击模态框外部关闭
+            window.addEventListener('click', (event) => {
+                if (event.target === loginModal) {
+                    closeModal(loginModal);
+                }
+                if (event.target === registerModal) {
+                    closeModal(registerModal);
+                }
+            });
+
+            // 登录/注册模态框切换
+            switchToRegister.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal(loginModal);
+                openModal(registerModal);
+            });
+
+            switchToLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal(registerModal);
+                openModal(loginModal);
+            });
+
+            // 示例：阻止表单提交，因为没有后端
+            document.querySelectorAll('.modal form').forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('这只是一个演示，表单数据不会真的发送！');
+                    closeModal(loginModal); // 关闭登录框
+                    closeModal(registerModal); // 关闭注册框
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
